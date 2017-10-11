@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Reddit Post Recreation</title>
+	<script src="https://use.fontawesome.com/aa5963477d.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
@@ -11,36 +12,40 @@
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="container">
 
 	<h2> Reddit Post Recreation</h2>
 	<div id="main">
 
 		
-			<ul>
+			<ul class="list-group">
 				<li 
 				is="redditpost" 
 				v-for="post in posts"  
 				v-bind:comment="post.comment" 
-				v-bind:id="post.id">
+				v-bind:id="post.id" 
+				v-bind:votes="post.votes">
 					
 				</li>
 
 			</ul>
 
 
-		<input type="text" id="commentInput" v-model="newComment" placeholder="post something...">
+		<input type="text" id="commentInput" v-model="newComment" v-on:keyup.enter="addPost" placeholder="post something...">
 		<button type="submit" class="btn btn-primary btn-sm" v-on:click="addPost">post</button>
-
-
-
 
 
 
 	</div>
 
-
-
+<template id="post-template">
+		<li> 
+			<i class="fa fa-chevron-up" aria-hidden="true"></i>
+    		<span class="label label-primary">{{ votes }}</span>
+    		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+    		<a>{{ comment }}</a>
+    	</li>
+</template>
 
 
 

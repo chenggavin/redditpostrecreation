@@ -1,7 +1,7 @@
 Vue.component( 'redditpost', {
-	template : '<li>{{ comment }} {{ id }}</li>',
+	template : '#post-template',
 
-	props: ['comment', 'id']
+	props: ['comment', 'id', 'votes']
 });
 
 
@@ -18,15 +18,18 @@ var demo = new Vue ({
 
 			{ 
 				id: 1,
-				comment: "Check out this link!!"
+				comment: "Check out this link!!",
+				votes: 2
 			},
 			{
 				id: 2,
-				comment: "Super cool dog tricks"
+				comment: "Super cool dog tricks",
+				votes: 20
 			},
 			{
 				id: 3,
-				comment: "random cat photos"
+				comment: "random cat photos",
+				votes: 9999
 			}
 
 		],
